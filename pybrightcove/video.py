@@ -284,6 +284,7 @@ class Video(object):
                     self.renditions = renditions
                 self.name = name
                 self.short_description = short_description
+                self.reference_id = reference_id
             elif id or reference_id:
                 self.id = id
                 self.reference_id = reference_id
@@ -468,7 +469,7 @@ class Video(object):
             if msg:
                 raise exceptions.PyBrightcoveError(msg)
         return super(Video, self).__setattr__(name, value)
-    
+
     def get_custom_metadata(self):
         """
         Fetches custom metadta for an already exisiting Video.
@@ -756,4 +757,3 @@ class Video(object):
         return connection.ItemResultSet('find_videos_by_ids',
             Video, _connection, page_size, page_number, sort_by, sort_order,
             video_ids=ids)
-
